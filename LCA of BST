@@ -1,0 +1,34 @@
+/*
+Given a binary search tree and data of two nodes, find 'LCA' (Lowest Common Ancestor) of the given two nodes in the BST.
+LCA
+LCA of two nodes A and B is the lowest or deepest node which has both A and B as its descendants. 
+*/
+import java.util.*;
+public class Solution {
+
+	/*
+	 * Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T> right;
+	 * 
+	 * public BinaryTreeNode(T data) { this.data = data; } }
+	 */
+
+
+	
+	public static int getLCA(BinaryTreeNode<Integer> root, int a, int b) 
+    {
+        if (root == null)
+            return -1;
+  
+        // If both n1 and n2 are smaller than root, then LCA lies in left
+        if (root.data > a && root.data > b)
+            return getLCA(root.left, a, b);
+  
+        // If both n1 and n2 are greater than root, then LCA lies in right
+        if (root.data < a && root.data < b)
+            return getLCA(root.right, a, b);
+  
+        return root.data;
+	}
+}
